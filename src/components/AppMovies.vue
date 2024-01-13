@@ -21,11 +21,12 @@ export default {
         <div class="container ">
             <div class="row ">
                 <div class="col-3" v-for="film, index in store.films" :key="index">
-                    <h5 id="dimensioni-font">{{film.title}}</h5>
-                    <h6>{{film.original_title}}</h6>
-                    <span>{{film.vote_average}}</span>
-                    <br>
-                    <span>{{film.original_language}}</span>
+                    <ul>
+                        <li>{{film.title}}</li>
+                        <li>{{film.original_title}}</li>
+                        <li>{{film.vote_average}}</li>
+                        <li>{{film.original_language}}</li>
+                    </ul>
                 </div>
             </div>        
         </div>
@@ -37,5 +38,10 @@ export default {
 
 h1 {
     text-transform: uppercase;
+}
+
+ul {
+    list-style: none;
+    padding: 0px 0px;
 }
 </style>

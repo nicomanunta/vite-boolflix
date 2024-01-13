@@ -21,11 +21,12 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-3" v-for="tv, index in store.series">
-                    <h5 id="dimensioni-font">{{tv.name}}</h5>
-                    <h6>{{tv.original_name}}</h6>
-                    <span>{{tv.vote_average}}</span>
-                    <br>
-                    <span>{{tv.original_language}}</span>
+                    <ul>
+                        <li>{{tv.name}}</li>
+                        <li>{{tv.original_name}}</li>
+                        <li>{{tv.vote_average}}</li>
+                        <li>{{tv.original_language}}</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -37,5 +38,11 @@ export default {
 
 h1 {
     text-transform: uppercase;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0px 0px;
 }
 </style>
