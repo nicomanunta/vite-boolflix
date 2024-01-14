@@ -26,6 +26,7 @@ export default {
                         <li>{{film.original_title}}</li>
                         <li>{{film.vote_average}}</li>
                         <li>{{film.original_language}}</li>
+                        <li></li>
                     </ul>
                 </div>
             </div>        

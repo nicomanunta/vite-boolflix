@@ -1,13 +1,23 @@
 <script>
 import { store } from "../store.js"
+
 export default {
     name: "AppSeries",
     data() {
         return {
-            store
+            store,
+
         }
     },
+    methods: {
+        getFlagUrl(original_language) {
+
+            return `https://flagsapi.com/${original_language.toUpperCase()}/flat/64.png`
+        },
+
+    },
 }
+
 </script>
 <template lang="">
     <div>
@@ -25,7 +35,9 @@ export default {
                         <li>{{tv.name}}</li>
                         <li>{{tv.original_name}}</li>
                         <li>{{tv.vote_average}}</li>
-                        <li>{{tv.original_language}}</li>
+                        <li class="language"><img>{{tv.original_language}}</li>
+                        <li><img :src="getFlagUrl(tv.original_language)" alt=""></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -44,5 +56,9 @@ h1 {
 ul {
     list-style: none;
     padding: 0px 0px;
+}
+
+.language {
+    text-transform: uppercase;
 }
 </style>
