@@ -11,8 +11,24 @@ export default {
     },
     methods: {
         getFlagUrl(original_language) {
-
-            return `https://flagsapi.com/${original_language.toUpperCase()}/flat/64.png`
+            if (original_language.toUpperCase() == "EN") {
+                return `https://flagsapi.com/GB/flat/64.png`
+            }
+            else if (original_language.toUpperCase() == "KO") {
+                return `https://flagsapi.com/KR/flat/64.png`
+            }
+            else if (original_language.toUpperCase() == "ZH") {
+                return `https://flagsapi.com/CN/flat/64.png`
+            }
+            else if (original_language.toUpperCase() == "JA") {
+                return `https://flagsapi.com/JP/flat/64.png`
+            }
+            else if (original_language.toUpperCase() == "DA") {
+                return `https://flagsapi.com/DK/flat/64.png`
+            }
+            else {
+                return `https://flagsapi.com/${original_language.toUpperCase()}/flat/64.png`
+            }
         },
 
     },
@@ -35,7 +51,6 @@ export default {
                         <li>{{tv.name}}</li>
                         <li>{{tv.original_name}}</li>
                         <li>{{tv.vote_average}}</li>
-                        <li class="language"><img>{{tv.original_language}}</li>
                         <li><img :src="getFlagUrl(tv.original_language)" alt=""></li>
                         
                     </ul>
