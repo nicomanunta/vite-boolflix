@@ -7,6 +7,12 @@ export default {
             store
         }
     },
+    methods: {
+        getFlagUrl(original_language) {
+            return `https://flagsapi.com/${original_language.toUpperCase()}/flat/64.png`
+
+        },
+    },
 }
 </script>
 <template lang="">
@@ -26,7 +32,7 @@ export default {
                         <li>{{film.original_title}}</li>
                         <li>{{film.vote_average}}</li>
                         <li>{{film.original_language}}</li>
-                        <li></li>
+                        <li><img :src="getFlagUrl(film.original_language)" alt=""></li>
                     </ul>
                 </div>
             </div>        
