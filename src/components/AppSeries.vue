@@ -62,22 +62,29 @@ export default {
         <div class="container ">
             <div class="row ">
                 <div class="col-12">
-                    <h1>serie-tv</h1>
+                    <h2>serie-tv</h2>
                 </div>
             </div>        
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-3" v-for="tv, index in store.series">
-                    <img :src="getPoster(tv.poster_path)" alt="">                     
-                    <h3>{{tv.name}}</h3>
-                    <h4>{{tv.original_name}}</h4>
-                    <div>
-                        <i v-for="star in getStar(tv.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i>
-                        <i v-for="star in getStar(tv.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i> 
-                    </div>
-                    <span><img :src="getFlagUrl(tv.original_language)" alt=""></span>
-                          
+            <div class="row d-flex flex-wrap ">
+                <div class="col-4 colonna-tv" v-for="tv, index in store.series">
+                    <div class="row d-flex flex-column">
+                        <div class="col-12 poster-container ">
+                            <div class="front-poster">
+                                <img class="img-w" :src="getPoster(tv.poster_path)" alt="">
+                            </div>
+                            <div class="back-poster">
+                                <h3>{{tv.name}}</h3>
+                                <h4>{{tv.original_name}}</h4>
+                                <div>
+                                    <i v-for="star in getStar(tv.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i>
+                                    <i v-for="star in getStar(tv.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i> 
+                                </div>
+                                <span><img :src="getFlagUrl(tv.original_language)" alt=""></span>
+                            </div>
+                        </div>
+                    </div>        
                 </div>
             </div>
         </div>
@@ -87,17 +94,52 @@ export default {
 @use "../styles/generals.scss" as *;
 @use "../styles/partials/variables" as *;
 
-h1 {
+h2 {
     text-transform: uppercase;
     margin-top: 20px;
 }
 
-ul {
-    list-style: none;
-    padding: 0px 0px;
+.img-w {
+    width: 100%;
 }
 
-.language {
-    text-transform: uppercase;
+
+.poster-container {
+    position: relative;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    display: flex;
+
+}
+
+.back-poster {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.front-poster {
+    position: relative;
+}
+
+.front-poster,
+.back-poster {
+    flex: 1;
+    backface-visibility: hidden;
+    z-index: 2;
+}
+
+.front-poster {
+    transform: rotateY(0deg);
+}
+
+.back-poster {
+    transform: rotateY(180deg);
+    background-color: #fff;
+}
+
+.colonna-tv:hover .poster-container {
+    transform: rotateY(180deg);
 }
 </style>
