@@ -28,6 +28,9 @@ export default {
                 return `https://flagsapi.com/${original_language.toUpperCase()}/flat/64.png`
             }
         },
+        getPoster(poster_path) {
+            return `https://image.tmdb.org/t/p/w342${poster_path}`;
+        }
     },
 }
 </script>
@@ -44,6 +47,7 @@ export default {
             <div class="row ">
                 <div class="col-3" v-for="film, index in store.films" :key="index">
                     <ul>
+                        <li><img :src="getPoster(film.poster_path)" alt=""></li>
                         <li>{{film.title}}</li>
                         <li>{{film.original_title}}</li>
                         <li>{{film.vote_average}}</li>
