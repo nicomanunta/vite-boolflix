@@ -33,8 +33,21 @@ export default {
         },
         getStar(vote_average) {
             let star = Math.round(vote_average / 2);
-            console.log(star)
-            return star
+            let stelle_piene = [];
+            for (let i = 0; i < star; i++) {
+                stelle_piene.push(i);
+            }
+            console.log(stelle_piene)
+
+            let stelle_vuote = [];
+            for (let i = star; i < 5; i++) {
+                stelle_vuote.push(i);
+            }
+            console.log(stelle_vuote)
+
+
+
+            return { stelle_piene, stelle_vuote }
 
         }
     },
@@ -56,7 +69,8 @@ export default {
                         <li><img :src="getPoster(film.poster_path)" alt=""></li>
                         <li>{{film.title}}</li>
                         <li>{{film.original_title}}</li>
-                        <li><i v-for="star, index in getStar(film.vote_average)" :key="index" class="fa-solid fa-star"></i>{{film.vote_average}}</li>
+                        <li><i v-for="star in getStar(film.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i></li>
+                        <li><i v-for="star in getStar(film.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i></li>  
                         <li>{{film.original_language}}</li>
                         <li><img :src="getFlagUrl(film.original_language)" alt=""></li>
                     </ul>
