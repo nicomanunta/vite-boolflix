@@ -63,7 +63,7 @@ export default {
             </div>        
         </div>
         <div class="container ">
-            <div class="row d-flex flex-wrap">
+            <div class="row">
                 <div class="col-4 colonna-tv" v-for="film, index in store.films" :key="index">
                     <div class="row d-flex flex-column">
                         <div class="col-12 poster-container">
