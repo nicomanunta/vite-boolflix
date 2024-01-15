@@ -50,11 +50,17 @@ export default {
 <template lang="">
   <div>
     <AppHeader @perform_search="getFilmList(),getSeriesList()"/>
-    <AppMovies/>
-    <AppSeries/>
+    <div class="bg-color">
+      <AppMovies/>
+      <AppSeries/>
+    </div>
   </div>
 </template>
-<style lang="scss" scoped>
+<style lang="scss" >
 @use "./styles/partials/variables" as *;
 @use "./styles/generals.scss" as *;
+
+.bg-color {
+  background-color: $colore-secondario;
+}
 </style>

@@ -55,7 +55,7 @@ export default {
 </script>
 <template lang="">
     <div>
-        <div class="container ">
+        <div class="container pt-4">
             <div class="row ">
                 <div class="col-12">
                     <h1>film</h1>
@@ -64,16 +64,17 @@ export default {
         </div>
         <div class="container ">
             <div class="row ">
-                <div class="col-3" v-for="film, index in store.films" :key="index">
-                    <ul>
-                        <li><img :src="getPoster(film.poster_path)" alt=""></li>
-                        <li>{{film.title}}</li>
-                        <li>{{film.original_title}}</li>
-                        <li><i v-for="star in getStar(film.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i></li>
-                        <li><i v-for="star in getStar(film.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i></li>  
-                        <li>{{film.original_language}}</li>
-                        <li><img :src="getFlagUrl(film.original_language)" alt=""></li>
-                    </ul>
+                <div class="col-4" v-for="film, index in store.films" :key="index">
+                    
+                        <img :src="getPoster(film.poster_path)" alt="">
+                        <h3>{{film.title}}</h3>
+                        <h4>{{film.original_title}}</h4>
+                        <div>
+                            <i v-for="star in getStar(film.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i>
+                            <i v-for="star in getStar(film.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i>  
+                        </div>
+                        <span><img :src="getFlagUrl(film.original_language)" alt=""></span>
+                    
                 </div>
             </div>        
         </div>
