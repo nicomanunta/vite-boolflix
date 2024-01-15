@@ -30,6 +30,12 @@ export default {
         },
         getPoster(poster_path) {
             return `https://image.tmdb.org/t/p/w342${poster_path}`;
+        },
+        getStar(vote_average) {
+            let star = Math.round(vote_average / 2);
+            console.log(star)
+            return star
+
         }
     },
 }
@@ -50,7 +56,7 @@ export default {
                         <li><img :src="getPoster(film.poster_path)" alt=""></li>
                         <li>{{film.title}}</li>
                         <li>{{film.original_title}}</li>
-                        <li>{{film.vote_average}}</li>
+                        <li><i v-for="star, index in getStar(film.vote_average)" :key="index" class="fa-solid fa-star"></i>{{film.vote_average}}</li>
                         <li>{{film.original_language}}</li>
                         <li><img :src="getFlagUrl(film.original_language)" alt=""></li>
                     </ul>
