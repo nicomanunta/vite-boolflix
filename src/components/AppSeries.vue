@@ -32,6 +32,25 @@ export default {
         },
         getPoster(poster_path) {
             return `https://image.tmdb.org/t/p/w342${poster_path}`;
+        },
+        getStar(vote_average) {
+            let star = Math.round(vote_average / 2);
+            let stelle_piene = [];
+            for (let i = 0; i < star; i++) {
+                stelle_piene.push(i);
+            }
+            console.log(stelle_piene)
+
+            let stelle_vuote = [];
+            for (let i = star; i < 5; i++) {
+                stelle_vuote.push(i);
+            }
+            console.log(stelle_vuote)
+
+
+
+            return { stelle_piene, stelle_vuote }
+
         }
 
     },
@@ -54,7 +73,8 @@ export default {
                         <li><img :src="getPoster(tv.poster_path)" alt=""></li>                       
                         <li>{{tv.name}}</li>
                         <li>{{tv.original_name}}</li>
-                        <li>{{tv.vote_average}}</li>
+                        <li><i v-for="star in getStar(tv.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i></li>
+                        <li><i v-for="star in getStar(tv.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i></li> 
                         <li><img :src="getFlagUrl(tv.original_language)" alt=""></li>
                         
                     </ul>
