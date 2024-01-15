@@ -69,15 +69,15 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-3" v-for="tv, index in store.series">
-                    <ul>
-                        <li><img :src="getPoster(tv.poster_path)" alt=""></li>                       
-                        <li>{{tv.name}}</li>
-                        <li>{{tv.original_name}}</li>
-                        <li><i v-for="star in getStar(tv.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i></li>
-                        <li><i v-for="star in getStar(tv.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i></li> 
-                        <li><img :src="getFlagUrl(tv.original_language)" alt=""></li>
-                        
-                    </ul>
+                    <img :src="getPoster(tv.poster_path)" alt="">                     
+                    <h3>{{tv.name}}</h3>
+                    <h4>{{tv.original_name}}</h4>
+                    <div>
+                        <i v-for="star in getStar(tv.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i>
+                        <i v-for="star in getStar(tv.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i> 
+                    </div>
+                    <span><img :src="getFlagUrl(tv.original_language)" alt=""></span>
+                          
                 </div>
             </div>
         </div>

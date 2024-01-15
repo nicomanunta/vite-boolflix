@@ -62,5 +62,6 @@ export default {
 
 .bg-color {
   background-color: $colore-secondario;
+  height: 100%;
 }
 </style>
