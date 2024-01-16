@@ -70,13 +70,17 @@ export default {
             <div class="row">
                 <div class="col-4 colonna-tv" v-for="tv, index in store.series">
                     <div class="row d-flex flex-column">
-                        <div class="col-12 poster-container ">
+                        <div class="col-12 poster-container p-0">
                             <div class="front-poster">
                                 <img class="img-w" :src="getPoster(tv.poster_path)" alt="">
                             </div>
-                            <div class="back-poster">
-                                <h3>{{tv.name}}</h3>
-                                <h4>{{tv.original_name}}</h4>
+                            <div class="back-poster d-flex flex-column align-items-center">
+                                <h5 class="pt-3">Titolo</h5>
+                                <h5 class="mb-4 px-2">"{{tv.name}}"</h5>
+                                <h6>Titolo originale</h6>
+                                <h6 class="mb-4 px-2">"{{tv.original_name}}"</h6>
+                                <h5>Trama</h5>
+                                <span class="text-center mb-5 px-4">{{tv.overview}}</span>
                                 <div>
                                     <i v-for="star in getStar(tv.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i>
                                     <i v-for="star in getStar(tv.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i> 
@@ -110,17 +114,21 @@ h2 {
     transform-style: preserve-3d;
     transition: transform 1s;
     display: flex;
-
+    color: white;
 }
 
 .back-poster {
     position: absolute;
     width: 100%;
     height: 100%;
+    transform: rotateY(180deg);
+    background-color: black;
+    overflow: scroll;
 }
 
 .front-poster {
     position: relative;
+    transform: rotateY(0deg);
 }
 
 .front-poster,
@@ -128,15 +136,6 @@ h2 {
     flex: 1;
     backface-visibility: hidden;
     z-index: 2;
-}
-
-.front-poster {
-    transform: rotateY(0deg);
-}
-
-.back-poster {
-    transform: rotateY(180deg);
-    background-color: #fff;
 }
 
 .colonna-tv:hover .poster-container {

@@ -72,11 +72,11 @@ export default {
                             </div>
                             <div class="back-poster d-flex flex-column align-items-center">
                                 <h5 class="pt-3">Titolo</h5>
-                                <h5 class="mb-4 px-2 "><b>{{film.title}}</b></h5>
+                                <h5 class="mb-4 px-2 "><b>"{{film.title}}"</b></h5>
                                 <h6>Titolo originale</h6>
-                                <h6 class="mb-4 px-2"><b>{{film.original_title}}</b></h6>
+                                <h6 class="mb-4 px-2"><b>"{{film.original_title}}"</b></h6>
                                 <h5>Trama</h5>
-                                <span class="text-center mb-5">{{film.overview}}</span>
+                                <span class="text-center mb-5 px-4">{{film.overview}}</span>
                                 <div>
                                     <i v-for="star in getStar(film.vote_average).stelle_piene" :key="index" class="fa-star fa-solid"></i>
                                     <i v-for="star in getStar(film.vote_average).stelle_vuote" :key="index" class="fa-star fa-regular"></i>  
